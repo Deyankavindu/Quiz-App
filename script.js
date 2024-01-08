@@ -40,9 +40,11 @@ const question = [
 const questionElement = document.getElementById("question");
 const answerButton = document.getElementById("answer-button"); // Fixed the variable name
 const nextButton = document.getElementById("next-btn");
+const highScoreElement = document.getElementById("high-score");
 
 let currentQuestionIndex = 0;
 let score = 0;
+let highScore = localStorage.getItem("highScore") || 0;
 
 function startQuiz() {
     currentQuestionIndex = 0;
@@ -81,9 +83,18 @@ function selectAnswer(e) {
     disableButtons();
 
     if (currentQuestionIndex === question.length - 1) {
+        updateHighScore();
         showScore();
     } else {
         nextButton.style.display = "block";
+    }
+}
+
+function updateHighScore() {
+    if (score > highScore) {
+        highScore = score;
+        localStorage.setItem("highScore", highScore); 
+        highScoreElement.innerText = `High Score: ${highScore}`;
     }
 }
 
@@ -125,4 +136,5 @@ nextButton.addEventListener("click", () => {
 });
 
 startQuiz();
+highScoreElement.innerText = `High Score: ${highScore}`;
  
