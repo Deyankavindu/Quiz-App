@@ -5,7 +5,8 @@
     box-sizing: border-box;
 }
 body{
-    background: #001e4d;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 }
 .app{
     background: #fff;
@@ -43,9 +44,12 @@ body{
     border-radius: 4px;
     cursor: pointer;
 }
-.btn:hover{
+.btn:hover:not([disabled]){
     background: #222;
     color: white;
+}
+.btn:disabled{
+    cursor: no-drop;
 }
 #next-btn{
     background: #001e4d;
@@ -58,4 +62,10 @@ body{
     border-radius: 4px;
     cursor: pointer;
     display: none;
+}
+.correct{
+    background: #37dc84 ;
+}
+.incorrect{
+    background: rgb(247, 143, 143);
 }
